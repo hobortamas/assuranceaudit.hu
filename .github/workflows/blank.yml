@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assurance Audit Kft.</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #003366; color: white; padding: 1em; text-align: center; }
+    nav { margin: 1em; text-align: center; }
+    nav a { margin: 0 10px; text-decoration: none; color: #003366; font-weight: bold; }
+    section { max-width: 800px; margin: 2em auto; padding: 1em; }
+    footer { background: #f0f0f0; text-align: center; padding: 1em; margin-top: 2em; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Assurance Audit Kft.</h1>
+    <p>Független könyvvizsgálat és tanácsadás</p>
+  </header>
+
+  <nav>
+    <a href="#hu" onclick="setLang('hu')">Magyar</a> | 
+    <a href="#en" onclick="setLang('en')">English</a>
+  </nav>
+
+  <section id="content">
+    <div id="hu" class="lang">
+      <h2>Rólunk</h2>
+      <p>Az Assurance Audit Kft. független könyvvizsgálati és tanácsadói szolgáltatásokat nyújt ügyfeleinek.</p>
+      <h2>Elérhetőség</h2>
+      <p>Email: info@assuranceaudit.hu<br>
+      Telefon: +36 1 234 5678</p>
+    </div>
+
+    <div id="en" class="lang" style="display:none;">
+      <h2>About Us</h2>
+      <p>Assurance Audit Ltd. provides independent audit and advisory services to its clients.</p>
+      <h2>Contact</h2>
+      <p>Email: info@assuranceaudit.hu<br>
+      Phone: +36 1 234 5678</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Assurance Audit Kft.</p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang').forEach(div => div.style.display = 'none');
+      document.getElementById(lang).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
