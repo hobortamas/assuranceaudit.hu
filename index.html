@@ -1,56 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assurance Audit Kft.</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header { background: #003366; color: white; padding: 1em; text-align: center; }
-    nav { margin: 1em; text-align: center; }
-    nav a { margin: 0 10px; text-decoration: none; color: #003366; font-weight: bold; }
-    section { max-width: 800px; margin: 2em auto; padding: 1em; }
-    footer { background: #f0f0f0; text-align: center; padding: 1em; margin-top: 2em; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assurance Audit Kft. — Független könyvvizsgálat</title>
+  <meta name="description" content="Assurance Audit Kft. — független könyvvizsgálat és tanácsadás.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Assurance Audit Kft.</h1>
-    <p>Független könyvvizsgálat és tanácsadás</p>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="brand">Assurance Audit Kft.</h1>
+      <p class="tagline">Független könyvvizsgálat és tanácsadás</p>
+      <nav class="lang-switch" aria-label="Nyelv">
+        <button onclick="setLang('hu')" id="btn-hu" aria-pressed="true">Magyar</button>
+        <button onclick="setLang('en')" id="btn-en" aria-pressed="false">English</button>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#hu" onclick="setLang('hu')">Magyar</a> | 
-    <a href="#en" onclick="setLang('en')">English</a>
-  </nav>
-
-  <section id="content">
-    <div id="hu" class="lang">
+  <main id="main" class="wrap">
+    <section id="hu" class="lang">
       <h2>Rólunk</h2>
-      <p>Az Assurance Audit Kft. független könyvvizsgálati és tanácsadói szolgáltatásokat nyújt ügyfeleinek.</p>
-      <h2>Elérhetőség</h2>
-      <p>Email: info@assuranceaudit.hu<br>
-      Telefon: +36 1 234 5678</p>
-    </div>
+      <p>Az <strong>Assurance Audit Kft.</strong> független könyvvizsgálati és tanácsadói szolgáltatásokat nyújt hazai és nemzetközi ügyfelek részére. Célunk a megbízható pénzügyi információk biztosítása és a vállalati kockázatok csökkentése.</p>
 
-    <div id="en" class="lang" style="display:none;">
-      <h2>About Us</h2>
-      <p>Assurance Audit Ltd. provides independent audit and advisory services to its clients.</p>
-      <h2>Contact</h2>
-      <p>Email: info@assuranceaudit.hu<br>
-      Phone: +36 1 234 5678</p>
-    </div>
-  </section>
+      <h3>Szolgáltatások (röviden)</h3>
+      <ul>
+        <li>Könyvvizsgálat</li>
+        <li>Pénzügyi beszámolók ellenőrzése</li>
+        <li>Tanácsadás számviteli és belső kontroll kérdésekben</li>
+      </ul>
 
-  <footer>
-    <p>&copy; 2025 Assurance Audit Kft.</p>
+      <h3>Elérhetőség</h3>
+      <p>Email: <a href="mailto:info@assuranceaudit.hu">info@assuranceaudit.hu</a><br>
+      Telefon: <a href="tel:+3612345678">+36 1 234 5678</a></p>
+
+      <h3>Cím</h3>
+      <p>Budapest, Magyarország</p>
+    </section>
+
+    <section id="en" class="lang" style="display:none;">
+      <h2>About us</h2>
+      <p><strong>Assurance Audit Ltd.</strong> provides independent audit and advisory services for domestic and international clients. Our aim is to ensure reliable financial information and to reduce corporate risk.</p>
+
+      <h3>Services (summary)</h3>
+      <ul>
+        <li>Statutory audit</li>
+        <li>Financial statement review</li>
+        <li>Accounting &amp; internal control advisory</li>
+      </ul>
+
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:info@assuranceaudit.hu">info@assuranceaudit.hu</a><br>
+      Phone: <a href="tel:+3612345678">+36 1 234 5678</a></p>
+
+      <h3>Address</h3>
+      <p>Budapest, Hungary</p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h3>Adatvédelmi és jogi megjegyzés</h3>
+      <p>Ez az oldal bemutató jellegű. A tényleges szerződések és hivatalos dokumentumok részletes leírása külön megállapodás tárgya.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2025 Assurance Audit Kft. — Minden jog fenntartva.</p>
+      <p><small>Ez egy statikus bemutatóoldal; a tartalmat szerkesztheted az <code>index.html</code> fájl módosításával.</small></p>
+    </div>
   </footer>
 
   <script>
-    function setLang(lang) {
-      document.querySelectorAll('.lang').forEach(div => div.style.display = 'none');
+    // Simple language switcher with localStorage
+    function setLang(lang) { 
+      var nodes = document.querySelectorAll('.lang');
+      for (var i=0; i<nodes.length; i++) nodes[i].style.display = 'none';
       document.getElementById(lang).style.display = 'block';
+      localStorage.setItem('aa_lang', lang);
+      document.getElementById('btn-hu').setAttribute('aria-pressed', lang === 'hu');
+      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
     }
+    (function() {
+      var saved = localStorage.getItem('aa_lang');
+      if (!saved) {
+        var nav = navigator.language || navigator.userLanguage || 'hu';
+        saved = nav.indexOf('en') === 0 ? 'en' : 'hu';
+      }
+      setLang(saved);
+    })();
   </script>
 </body>
 </html>
